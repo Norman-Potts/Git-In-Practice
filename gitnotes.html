@@ -1,0 +1,593 @@
+<!DOCTYPE html/>
+<html lang="en" >
+<html>
+	<head>			
+		<title>Git Reference</title>		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">				
+		<style  type="text/css" >			
+			a { text-decoration: none; }			
+			body {
+				background:  navy;
+				color: 	#6666ff;
+				font-family: Tahoma, sans-serif;
+				font-size: 2em;
+			}	
+			table {
+				border: 1px solid 	#6666ff;
+				margin: 5%;				
+				width: 70vw;								
+			}
+			table, th, td {
+				border: 3px solid #6666ff;
+				border-style: double;
+				border-collapse: collapse;
+				padding: 1.5%;
+			}
+			thead tr th:first-child,
+			tbody tr td:first-child {
+			  width: 14em;
+			  min-width: 14em;
+			  max-width: 14em;
+			  word-break: break-all;
+			}
+						
+			td, th {
+				padding: 0.6em;
+				font-weight:bold; 
+			}
+			caption {
+				text-align: left;
+				font-weight:bold; 
+				font-size:2em;
+			}
+		 
+					
+			ol li {
+				padding: 0 0.34em 0 0.34em;
+			}
+			
+			.container {				
+				margin: 5%;				
+				float: inline-block;
+				width: 70vw;
+				font-size: 0.7em;
+				
+			}
+			.inner-container {
+				border: 3px solid #6666ff;
+				border-style: double;
+			}
+			
+			code { 
+				display: block;
+				max-width: 95%;
+				padding: 0.3em;
+				
+			}
+		
+		</style>		
+	</head>	
+	<body  id = "top">				
+					
+		
+
+	<h1> Git Notes </h1>
+			
+	<table>
+	<caption> Basic Git Commands </caption>
+	<thead>
+		<tr><th>Commands</th><th>What it does</th></tr>
+	</thead>		
+	<tbody>
+	<tr><td>$ git init</td><td> Initialize local git repository</td></tr>
+	<tr><td>$ git add &lt;file&gt; </td> <td>Add File(s) To Index</td></tr>			
+	<tr><td>$ git status	</td><td>  Check status of working tree</td></tr>
+	<tr><td>$ git commit </td><td>  Commit Changes in Index</td></tr>
+	<tr><td>$ git push 	</td><td>Push to remote repository </td></tr>
+	<tr><td>$ git pull 	</td><td> Pull Latest Remote Repository </td></tr>
+	<tr><td>$ git clone </td><td> Clone Repository into a new directory</td></tr>
+	</tbody>
+	</table>	
+	
+	
+	
+	<table>
+	<caption> Create Project and Make a Commit Example </caption>
+	</thead>
+	<tr><th>Commands</th><th>What it does</th></tr>
+	<thead>		
+	<tbody>
+	<tr><td>$ git init myproject </td>						<td>Setting up of the git control structures, creates a folder that will contain the project, and the control files that store the history snapshots.</td></tr>
+	<tr><td>$ cd myproject</td> 							<td> Move into folder </td></tr>			
+	<tr><td>$ git add . 	</td>							<td> The 'add' command that actually notices the files and puts them in a holding zone waiting to be commited.</td></tr>
+	<tr><td>$ git commit -m"Importing all the code"   </td>	<td> The 'commit' recods a snapshot that exit at the given time. The m option specifes a message.</td></tr>	
+	</tbody>
+	</table>
+	
+	
+	
+	
+	
+	<table>
+	<caption> Two Person Team Example </caption>
+	<thead>
+		<tr><th>Commands</th><th>What it does</th></tr>
+	</thead>		
+	<tbody>
+	<tr><td>Tim $ git checkout master   	    </td>					<td> doug can work on his master branch...</td></tr>
+	<tr><td>Tim $ git commit -a -m"My new logo"  </td>					<td> making another commit. with a message specified.</td></tr>			
+	<tr><td>Tim $ git push </td>										<td>  sending it to the centeral server</td></tr>
+	<tr><td>Sam $ git checkout -b Timsfeature        </td>				<td>  create Timsfeature branch and change head to that branch. ( -b specifies creation of new branch ).</td></tr>		
+	<tr><td>Sam $ git commit -a -m"My feature code"    	    </td>		<td> comit some code with a message.</td></tr>
+	<tr><td>Sam $ git push origin timfeature</td>						<td>push to server.</td></tr>			
+	<tr><td>Tim $ git pull  </td>										<td>  Retrive server's centralized files</td></tr>
+	<tr><td>Tim $ git merge timsfeature      </td>						<td>  Combine files </td></tr>		
+	</tbody>
+	</table>
+	
+	<table>
+	<caption> Documentation </caption>
+	</thead>
+	<tr><th>Commands</th><th>What it does</th></tr>
+	<thead>		
+	<tbody>
+	<tr><td>$ git add -p MyReport.markdown    	    							 </td><td>Adding little segments of a document.</td></tr>
+	<tr><td>$ git commit -m"Added latest statistics"   							 </td><td>Committing</td></tr>			
+	<tr><td>$ git log --graph --decorate --abbrev- commit --all --pretty=oneline </td><td>A graph of history of document.</td></tr>	
+	<tr><td>$ git log --oneline --graph --decorate </td><td>prints a graph of the branch </td></tr>
+	
+	</tbody>
+	</table>	
+	
+	<table>
+	<caption> Configuring username and email </caption>
+	</thead>
+	<tr><th>Commands</th><th>What it does</th></tr>
+	<thead>		
+	<tbody>
+	<tr><td>$ git config --global user.name "Tim Devops"			</td><td>sets who to give credit to for commits.</td></tr>
+	<tr><td>$ git config --global user.email "Timdevops@gmail.com" </td><td>sets email for commits</td></tr>			
+	</tbody>
+	</table>
+					
+	<table>
+	<caption> Configuring Tooling    </caption>
+	</thead>
+	<tr><th>Commands</th><th>What it does</th></tr>
+	<thead>		
+	<tbody>
+	<tr><td>$ git config --global user.name "[name]"  							 </td><td>Sets the name you want attached to your commit transactions.</td></tr>
+	<tr><td>$ git config --global user.email "[email address]" 					 </td><td>Sets the email you want attached to your commit transactions</td></tr>			
+	<tr><td>$ git config --global color.ui auto  								 </td><td>Enables helpful colorization of command line output</td></tr>	
+	</tbody>
+	</table>
+						
+	<table>		
+	<caption> Create Reositories </caption>
+	</thead>
+	<tr><th>Commands</th><th>What it does</th></tr>
+	<thead>		
+	<tbody>
+	<tr><td>$ git init [project-name] 			</td><td>Creates a new local repository with the specified name.</td></tr>
+	<tr><td>$ git clone [url] </td><td> Downloads a project and it's entire version history.</td></tr>			
+	<tr><td>$ git clone [url] --bare  </td><td> --bare and --mirror flags can  be used with clone, which create a repo suitable for hosting on a server. </td></tr>			
+	<tr><td>$ git clone [url] --depth  </td><td> --depth flag creates a shallow clone, where only a specified number of revisions are downloaded from the remote repo. It cannot be cloned, fetched, or pushed too. Helpful for reducing clone time for very large repositories.  </td></tr>			
+	
+	</tbody>
+	</table>
+			
+	<table>
+	<caption>Make Changes </caption>
+	</thead>
+	<tr><th>Commands</th><th>What it does</th></tr>
+	<thead>		
+	<tbody>
+	<tr><td>$ git status   	    </td>					<td> List all new or modified files ot be committed.</td></tr>
+	<tr><td>$ git diff  </td>					<td> Shows file differences not yet staged. </td></tr>			
+	<tr><td>$ git add [file]  </td>										<td> Snapshots the file in preparation for versioning </td></tr>
+	<tr><td>$ git diff --staged        </td>				<td> Shows file differences between staging and the last file version</td></tr>		
+	<tr><td>$ git reset [file] 	   	    </td>		<td> Unstages the file, but preserve it's contents.</td></tr>
+	<tr><td>$ git reset .</td><td>Reset all files from staging area. Short hand for 'git reset --mixed HEAD [filename]' as reset defaults to --mixed, and HEAD </td></tr>
+	<tr><td>$ git reset --mixed  . </td><td>Resets the index (staging area). </td></tr>
+	<tr><td>git reset --hard . </td><td>Resets the index and the working diecroy to the last commit. Your work will have gone back to the last commit! </td></tr>
+	<tr><td>$ git reset --soft HEAD^  </td><td>Changes the HEAD pointer to the previous comit.  </td></tr>
+	<tr><td>$ got commit -m "[descriptive message]"</td>						<td>Records file snapshots permanetly in verion history.</td></tr>			
+	<tr><td>$ git push --set-upstream origin master</td><td> push's commit to repository, and tell the local master branch to track the remote repo as master/origin.</td>
+	<tr><td>$ git remote </td><td> can be used with rename and remove subcommands to alter remotes. </td></tr>		
+	<tr><td>$ git remote show </td><td> queries and shows verbose info about the given remote. </td></tr>		
+	<tr><td>$ git remote prune </td><td> deletes any remote references to branches that have been deleted from the remote repository by other users. </td></tr>		
+	<tr><td>$ git push --force</td><td> force flag disables some checks on the remote repository to allow rewriting of history. Do not use this flag. </td></tr>
+	<tr><td>$ git push --all</td><td> all flag pushes all branches and tags at once. Becareful, you may push some branches with work in progress. </td></tr>
+	<tr><td>$ git merge --no-ff</td><td>create a merge commit but do not perform a fast forward merge. </td></tr>
+	
+	</tbody>
+	</table>
+	
+	<table>
+	<caption>Group Changes </caption>
+	</thead>
+	<tr><th>Commands</th><th>What it does</th></tr>
+	<thead>		
+	<tbody>
+	<tr><td>$ git branch  	    </td>					<td> List all new or modified files ot be committed.</td></tr>
+	<tr><td>$ git branch [branch-name]   </td>					<td> Creates a new branch. </td></tr>			
+	<tr><td>$ git branch [branch-name] [start-point]  [--track] </td>	<td> Creates a new branch. Defaults to current branch, allows you to create branches from previous commits. Useful if say the current master branch state has broken unit tests that you need to be working. --track combined with a start point, sets the upstream for the branch. Similar to --set-upstream without pushing anything. </td></tr>			
+	<tr><td>$ git checkout [branch-name] </td> <td> Switches to the specified branch and updates the working directory </td></tr>
+	<tr><td>$ git merge [branch] 		 </td>				<td>  Combines the specified branch's history into th ecurrent branch.</td></tr>		
+	<tr><td>$ git branch -d [branch-name] </td>		<td> Deletes the specified branch.</td></tr>
+	</tbody>
+	</table>				
+
+	<table>
+	<caption>Refactor Filenames  </caption>
+	</thead>
+	<tr><th>Commands</th><th>What it does</th></tr>
+	<thead>		
+	<tbody>																 
+	<tr><td>$ git rm [file] 		                                        		                </td><td> Delete the file from the working directory and stages the deletion </td></tr>	
+	<tr><td>$ git rm --cached [file] 		                                                        </td><td> Removes the file from version control but preserves the file locally </td></tr>	
+	<tr><td>$ git mv [file-original] [file-renamed]   		                                        </td><td> Changes the file name and prepares it commit </td></tr>	
+	</tbody>
+	</table>
+			
+	<table>
+	<caption>Tracking  </caption>
+	</thead>
+	<tr><th>Commands</th><th>What it does</th></tr>
+	<thead>		
+	<tbody>                                                        
+	<tr><td>*.log build/temp-* </td><td> A text named .gitignore suppresses accidental versioning of files and paths matching the specified patterns. </td></tr>	
+	<tr><td>$ git ls-files --other --ignored --exclude-standard  </td><td> Lists all ignored files in this project. </td></tr>	
+	<tr><td>$git ls-files</td><td>View the files that are currently tracked</td></tr>
+	<tr><td>$git ls-files -o</td><td>Show the currently untracked files.</td></tr>
+	<tr><td>$git clean -n </td><td>Remove untracked files from git working directory, -n preforms dry run.</td></tr>
+	<tr><td>$git clean -f </td><td>Removes untracted fileds, same as --force, perminate should use -n first.</td></tr>
+	<tr><td>echo \*.tmp > .gitignore</td><td>Create a gitignore file and write '.tmp' in it.</td></tr>
+	<tr><td>$git clean -n -X </td><td>Remove ignored files.</td></tr>
+	<tr><td>$git clean -f </td><td>Removes untracted fileds, same as --force, perminate should use -n first.</td></tr>
+	<tr><td>git update-index --assume-unchanged [filename]</td><td>Assume no changes have been made to a file, git will not check for any chagnes.<td></tr>
+	<tr><td>git ls-files -v</td><td> List all the files that git has been told to assume haven't changed. The output has H for commited file, h has assume-unchanged, beside filenames.	</td></tr>
+	<tr><td>git ls-files -v | grep '^[hsmrck?]' | cut -c 3-</td><td>piped command prints only assumed unchanged.</td></tr>
+	<tr><td>git update-index --no-assume-unchanged [filename]</td><td>Stop assuming there have been no changes. </td></tr>
+	
+	</tbody>
+	</table>
+			
+	<table>
+	<caption>Save Fragments</caption>
+	</thead>
+	<tr><th>Commands</th><th>What it does</th></tr>
+	<thead>		
+	<tbody>
+	<tr><td>$ git stash </td><td> Temporarily stores all modified tracked files. </td></tr>	
+	<tr><td>$ git stash pop </td><td> Restores the most recently stashed files. </td></tr>	
+	<tr><td>$ git stash list </td><td> Lists all stashed changesets. </td></tr>	
+	<tr><td>$ git stash drop </td><td> Discards the most recently stashed changeset. </td></tr>	
+	</tbody>
+	</table>
+			
+	<table>
+	<caption>Review History</caption>
+	</thead>
+	<tr><th>Commands</th><th>What it does</th></tr>
+	<thead>		
+	<tbody>	
+	<tr><td>$ git log </td><td> Lists version history for the current branch. </td></tr>	
+	<tr><td>$ git log --follow [file] </td><td> Lists version history for a file, including renames. </td></tr>	
+	<tr><td>$ git diff [first-branch]...[second-branch] </td><td> Shows content difference between two branches. </td></tr>	
+	<tr><td>$ git show [commit] </td><td> Outputs metadata and content changes of the specified commit. </td></tr>	
+	<tr><td>$ gitk or gitx </td><td> Opens history of commits for the repository.  </td></tr>	
+	<tr><td>$ git blame</td><td>Find why and when a line in a file was changed, and by whom</td></tr>
+	<tr><td>$ git blame --date=short [filename]</td><td>Show the commit, person, and date on which each line was changed.</td></tr>
+	<tr><td>$ git blame --date=short [filename] --show-email</td><td>Show email address instead of author.</td></tr>
+	<tr><td>$ git bisect start</td><td> Allows you to find a commit that is causing a bug. </td></tr>
+	<tr><td>$ git bisect run</td><td>Automates bisect command. </td></tr>
+	<tr><td>$ git bisect good</td><td>Find the commits without a bug. </td></tr>
+	<tr><td>$ git bisect bad</td><td>Find the commis with a bug. </td></tr>
+	<tr><td>$ git log --author "Norman Potts" --after "Nov 10 2013" --grep 'file\.' </td><td>List commits authored by Norman Potts after November 10 2013. </td></tr>
+	<tr><td>$ git log --max-count</td><td>limit the number of commits shown in the log output.</td></tr>
+	<tr><td>$ git log --reverse</td><td>argument to show the commits in ascending chronological order, oldest commit first.</td></tr>
+	<tr><td>$ git log --before</td><td>will only show commits before the given date.</td></tr>
+	<tr><td>$ git log --after</td><td>will only show commits after a given date. </td></tr>
+	<tr><td>$ git log --merges</td><td>only show merge commits - commits what have at least two parents. </td></tr>
+	<tr><td>$ git show </td><td>same as log, but only shows one commit</td></tr>
+	<tr><td>$ git log --format=email --reverse --max-count 2'</td><td>List last two commits in an email format with the oldest displayed first.</td></tr>
+	<tr><td>$ git log --patch </td><td>allows you to format the diff output by specifying flags for git diff. </td>	
+	<tr><td>$ git log --patch --word diff </td><td> shows the word diff for each log entry rather than the unified diff.</td>	
+	<tr><td>$ git log --date=relative </td> <td> --date takes various parameters to display the output dates in different formats. --date relative displays dates relative to the current date </td></tr>
+	<tr><td>$ git log --format (or --pretty) </td><td> this flag can take various parameters such as email, which youve seenin in this example. </td></tr>
+	<tr><td>$ gitk or gitx </td><td>Opens up a graphical history viewer  </td></tr>
+	<tr><td>$ git remote update </td><td> will bring your remote refs up to date. When you need to update your refs. </td></tr>
+	<tr><td>$ git status -uno </td><td> Will tell you whether the branch you are tracking is ahead, behind or has diverged. </td></tr>
+	<tr><td>$ git remote -v update </td><td> will bring your remote refs up to date, and tell you if you are up to date. </td></tr>
+	<tr><td>$ git shortlog HEAD~6..HEAD</td><td>Displays commits grouped by author with one commit subject per line. HEAD~6..HEAD is optional, but typically you’d want to use one to create a software-release announcement for any version after the first. </td></tr>
+	
+	
+	</tbody>
+	
+	</table>
+	
+	
+			
+	<table>
+	<caption>Redo Commits </caption>
+	</thead>
+	<tr><th>Commands</th><th>What it does</th></tr>
+	<thead>		
+	<tbody>
+	<tr><td>$ git reset [commit]   		   		                                                    </td><td> Undoes all commits after [commit], preserving changes locally. </td></tr>	
+	<tr><td>$ git reset --hard [commit]  		   		                                            </td><td> Discards all history and changes back to the specified commit. </td></tr>	
+    </tbody>
+	</table>
+			                                                                      
+	<table>
+	<caption>Synchronize Changes   </caption>
+	</thead>
+	<tr><th>Commands</th><th>What it does</th></tr>
+	<thead>		
+	<tbody>	                                                    
+	<tr><td>$ git fetch [bookmark]  </td><td> Downloads all history from the repository bookmark. </td></tr>	
+	<tr><td>$ git merge [bookmark]/[branch]  </td><td> Combines bookmark's branch into current local branch. </td></tr>	
+	<tr><td>$ git push [alias] [branch]  </td><td> Uploads all local branch commits to GitHub. </td></tr>	
+	<tr><td>$ git pull </td><td> Downloads bookmark history and incorporates changes. </td></tr>	
+	<tr><td>$ git pull --rebase </td><td> rebase reather than a merge. </td></tr>		
+	</tbody>
+	</table>
+				
+				
+				
+	<table>
+	<caption>Terms and Definitions </caption>
+	</thead>
+	<tr><th> Term </th><th>Definitions</th></tr>
+	<thead>		
+	<tbody>	                                                    
+	<tr><td> origin </td><td> The default remote and references the repository from which the clone originated.  Your main remote repo. </td></tr>		
+	<tr><td> master </td><td> a naming convention for a branch. Can be seen as a repository's "default" branch  </td></tr>		
+	<tr><td>origin/master </td><td> The master branch on the origin remote is now known as the tracking branch (or upstream) for your local master branch.</td> </tr>
+	<tr><td> rebase </td><td> a method of rewriting history in Git that is similar to a merge. A rebase involves changing the parent of a commit to point to another </td></tr>		
+	<tr><td> pull </td><td> when you get commits from a remote repo and merge if necessary </td></tr>		
+	<tr><td> merge </td><td> when all the commits from another branch are pulled into the current branch. </td></tr>		
+	<tr><td> merge conflict</td><td>Occurs when both branches involved in the merge have changed the same part of the same file.</td></tr>
+	<tr><td> fetch </td><td> when you get commits from a remote repo without merging commits  </td></tr>		
+	<tr><td> commit </td><td> basically saving updates that are in staging area ( files selected by git add command) to the remote repo.  </td></tr>		
+	<tr><td>tracking branch</td><td> The defualt push or fetch location for a branch. This means you can run git push with no arguments on this branch and it will do the same thing as running git push origin master. </td></tr>
+	<tr><td>fast-forward</td><td>means no merge commit was made on git pull. the incoming branch has the current branch as an anscestor. </td></tr>	
+	<tr><td>branch</td><td>a pointer from one commit to it's parent. Allows two independent tracks through history to be created and commit to an independent branch without the fear of disrupting the work of another branch.</td></tr>	
+	<tr><td>tag</td><td>similar to a branch but it points to a single commit and remains pointing to that same commit even when new commits are made.</td></tr>		
+	<tr><td>HEAD</td><td>When working with Git, only one branch can be checked out at a time - and this is what's called the "HEAD" branch. Often, this is also referred to as the "active" or "current" branch.</td></tr>
+	<tr><td>ref</td><td>Reference. Simple name for a SHA-1 instead of directly using SHA-1 value.</td></tr>
+	<tr><td>tag</td><td>A tag is another ref (or pointer) for a single commit. Tags differ from branches in that they’re (usually) permanent. Rather than pointing to the work in progress on a feature, they’re generally used to describe a version of a software project.</td></tr>
+		</tbody>
+	</table>
+	
+	
+
+	
+	<div class = "container" >
+	<span> Connecting GitHub With SSH  </span>
+	<div class = "inner-container">
+	<ol>
+	<li> Open Git Bash </li>
+	<li> Generate a new SSH key, use command ssh-keygen -t rsa -b 4096 -C “your_comment_or_email”. Enter to accept default filename and input passphase as needed.    </li>
+	<li> Check if SSH is running withy command eval $(ssh-agent -s). You should see output like: Agent pid 4056</li>
+	<li> Add the new SSH private key to SSH agent with command ssh-add ~/.ssh/id_rsa</li>
+	<li> Copy the public key to the clipboard with command clip < ~/.ssh/id_rsa.pub</li>
+	<li> Go to GitHub SSH and GPG keys setting</li>
+	<li> Click New SSH, name Title for your reference, and paste into the Key</li>
+	<li> Click Add SSH Key</li>
+	<li> Test connection with command ssh -T git@github.com. If everything works fine, you should see this message... "Hi ...! You've Successfully authenticated,..."	</li>	
+	</ol>
+	</div>
+
+		
+	<table>
+		<caption>
+			Advanced Branching
+		</caption>
+	</thead>
+	<tr><th>Commands</th><th>What it does</th></tr>
+	<thead>		
+	<tbody>	                                                    
+		<tr><td>$  git help mergetool  </td><td> Details on how to configure mergtool. </td></tr>	 		
+		<tr><td>$ git rerere </td><td> A tool that allows you to record the resolution of merge conflicts for later replay with a normal merge. </td></tr>
+		<tr><td>$ git config --global --add rerere.enabled 1</td><td> enabled git rerere to automatically save and retrieve merge-conflict resolutions in all repositories.</td></tr>
+		<tr><td>$ git tag v0.1 </td><td>Assign the current head a tag named 'v0.1'</td></tr>
+		<tr><td>$ git tag --list</td><td>lists all the tags that match a given pattern. </td></tr>
+		<tr><td>$ git tag --force</td><td>Updates a tag to point to the new commit. </td></tr>
+		<tr><td>$ git tag --delete</td><td>Deletes a tag. </td></tr>
+		<tr><td>$ git describe --tags  </td><td> Show the version generated from the state based on existing tags. </td></tr>
+		<tr><td>$ git describe --tags v0.1 </td><td> Generates the verion number for that particular commit. </td></tr>
+		<tr><td>$ git cherry-pick v0.1-release</td><td>To include only a single commit from a branch onto the current branch rather than merging the entire branch.( cherry-pick  a commit from another branch )</td></tr>
+		<tr><td>$ git cherry-pick --edit </td><td>prompts you for a commit message before committing. </td></tr>
+		<tr><td>$ git cherry-pick --x</td><td>to append a line to the cherry picked commit message. </td></tr>
+		<tr><td>$ git cherry-pick --signoff</td><td>to indicate in the commit message which person cherry-picked a particular change more explicitly than the Committer metadata set by default</td></tr>
+		<tr><td>$ git cherry-pick --continue</td><td> allows you to resolve a merge conflict in a fashion similar to git merge or git rebase. This involves resoliving the conflict and running git add, but then using git cheryy--pick --continue instead of git commit. </td></tr>
+		<tr><td>$ git cherry-pick --about</td><td>allows you to abort the current cherry-pick, perhaps because you've realized the merge conflict is to complex. </td></tr>
+		<tr><td>$ git revert [commit]</td><td>revert to a commit to reverse it's changes. </td></tr>
+		<tr><td>$ git cherry</td><td> to see which of your commits has been merged to another branch</td></tr>
+		<tr><td>$ git cherry --verbose master</td><td> See what commits remain unmerged to the master from the head branch. Removing the -verbose flag it shows just the -/+ and the full SHA-1 but not the commit subject. </td></tr>
+		
+	</tbody>
+	</table>
+		
+	
+	<table>
+		<caption>
+			Rewriting history and disaster recovery
+		</caption>
+	</thead>
+	<tr><th>Commands</th><th>What it does</th></tr>
+	<thead>		
+	<tbody>	 
+		<tr><td>$ git reflog</td><td>view the state of the reflog for the HEAD pointer, Listing all changes including history rewrites. (reference log)</td></tr>
+		<tr><td>$ git log --walk-reflogs --abbrev-commit --pretty =oneline</td><td>equals 'git reflog'</td></tr>
+		<tr><td>$ git reset HEAD^</td><td>Undo the last commit on the master branch.</td></tr>		
+		<tr><td>$ git reset --soft HEAD^</td><td> the contents of the index staging area (and therefore the commit) will be the same as the commit that was just reset.--soft changes the HEAD pointer to point to the previous commit. </td></tr>
+		<tr><td>$ git commit --amend</td><td>resets to the previous commit and then creates a new commit with the same commit message as the commit that was just reset. it adds anything you have currently added to the index staging area to the changes from the previous commit and prompts for a new commit message.</td></tr>
+		<tr><td>$ git rebase [branch] </td><td> Rebase [branch] on top of HEAD branch </td></tr>
+		<tr><td>$ git rebase --continue </td><td>This continues the rebase operation by rebasing any further commits and, if successful, updating the rebased branch.git rebase --continue should be run after the normal merge conflictresolution process of manually resolving the conflicts and marking them as fixed using git add.  </td></tr>
+		<tr><td>$ git rebase --skip</td><td> Rather than solving the merge conflicts in this particular commit, the commit is skipped and the next one is applied instead. </td></tr>
+		<tr><td>$ git rebase --abort </td><td>Gives up on the git rebase process altogether and returns the branch to its state before the rebase was attempted. </td></tr>
+		<tr><td>$ git commit --allow-empty --message "Empty commit"</td><td>Creates an empty commit. </td></tr>
+		<tr><td>$ git rebase --interactive [Branch]</td><td> To interactively rebase the history of a branch.  Alter the history of a branch into the form you’d like. </td></tr>
+		<tr><td>$ git pull --rebase</td><td> Instead of a merge commit on git pull, rebase. </td></tr>
+		<tr><td>$ git filter-branch  </td><td> It iterates through
+			the entire history of a branch and lets you rewrite every commit as it does so.  </td></tr>
+		<tr><td>$ git filter-branch --prune-empty --index-filter "git rm --cached --ignore-unmatch [filename]" master.</td><td>remove all references to the file [filename] on the master branch </td></tr>
+		<tr><td>$ git filter-branch --help</td><td>Offers explination of much more of the capabilites of filter-branch</td></tr>
+	</tbody>
+	</table>
+
+	<table>
+		<caption>
+			Personalizing Git
+		</caption>
+	</thead>
+	<tr><th>Commands</th><th>What it does</th></tr>
+	<thead>		
+	<tbody>	 
+		<tr><td>$ git config --global user.name "username"</td><td>To set your Git username in your global Git configuration.</td></tr>
+		<tr><td>$ git config user.email example@example.com</td><td>Set email</td></tr>
+		<tr><td>$ git config --global color.ui auto</td><td>Turns on colored git output.</td></tr>		
+		<tr><td>$ git config --global push.default simple</td><td>Set the default push strategy to simple. </td></tr>
+		<tr><td>$ git config --global fetch.prune 1 </td><td>This means all remote branches will be pruned whenever you fetch or pull form a remote repo. </td></tr>
+		<tr><td>$ git config --global core.excludesfile ~/.gitignore </td><td>Tell git you wish to use ~/.gitignore. A global gitignore.</td></tr>
+		<tr><td>$ git help --help --web</td><td>Get the git help command in the web browser. </td></tr>
+		<tr><td>$ git config --global alias.ultimate-log "log --graph --oneline --decorate"</td><td> Create a shorter alias for the ultimate log out put from earlier... It has been renamed 'git ultimate-log' </td></tr>	
+	</tbody>
+	</table>
+
+
+	<table>
+		<caption>
+			Vendoring dependencies as submodules
+		</caption>
+	</thead>
+	<tr><th>Commands</th><th>What it does</th></tr>
+	<thead>		
+	<tbody>
+	
+		<tr><td>$ git submodule add [github.com...] </td><td>Add a submodule to the repository head branch</td></tr>
+		<tr><td>$ git submodule add --quiet </td><td>Makes a git submodule add only print out error messages and no status information. </td></tr>
+		<tr><td>$ git submodule add --force </td><td>Lets you add a submodule path that would otherwise be ignored by .gitignore rules. </td></tr>
+		<tr><td>$ git submodule add --depth </td><td>Passed to the git clone of the submodule to let you create a shallow clone containing only the requested number of revisions. </td></tr>
+		<tr><td>$ git submodule status</td><td>Show the current states of all submodules of a repo.</td></tr>
+		<tr><td>$ git submodule init</td><td> Initialize submodules not automatically Initialized (When someone clones the repo ) </td></tr>
+		<tr><td>$ git submodule update --init </td><td> Initialize all submodules in repo and update them to latest version. </td></tr>
+		<tr><td>$ git submodule foreach 'echo $name: $toplevel/$path [$sha1]' </td><td>Output some status info for every submodule in the repo </td></tr>
+	</tbody>
+	</table>
+
+
+	<table>
+		<caption>Working with subversion</caption>
+		<tread>
+			<tr><th>Commands</th><th>What it does</th></tr>
+		</tread>
+		<tbody>
+			<tr><td>git svn clone --prefix=origin/ --stdlayout [Address] [directory-name] </td><td>Import a subversion repo into a local git repo</td></tr>
+			<tr><td> git svn rebase </td><td> rebase in svn </td></tr>
+			<tr><td>git svn clone </td><td>to import an existing subversion repo</td></tr>			
+		</tbody>
+	</table>
+
+
+
+
+	
+	<table>
+		<caption> GitHub Pull Requests </caption>
+		<thead>
+			<tr><th>Commands</th><th>What it does</th></tr>
+		</thead>		
+		<tbody>
+		<tr><td>$ gh pull request  </td><td> Create a pull request </td></tr>
+		<tr><td>$ git fork </td> <td> fork a repo, which means create your own repo and create a pull requst to someone repo, so you can work on it   </td></tr>							
+		</tbody>
+		</table>
+
+
+
+		<table>
+			<caption> Hosting a Repository </caption>
+			<thead>
+				<tr><th>Commands</th><th>What it does</th></tr>
+			</thead>		
+			<tbody>
+			<tr><td>git init --bare </td><td>Create a bare git repo</td></tr>
+			<tr><td>git clone --mirror</td><td>Create a mirror to an existing remote repo</td></tr>
+			<tr><td>git daemon</td><td>Share a repo with other users on the same network. </td></tr>			
+			
+			</tbody>
+		</table>
+	
+			<table>
+			<caption> CMake Developers Workflow </caption>
+			<thead>
+				<tr><th>Commands</th><th>What it does</th></tr>
+			</thead>		
+			<tbody>
+			<tr><td colspan="2">These steps set up the CMake repository on a local machine: </td><tr>
+			<tr><td>git clone http://cmake.org/cmake.git </td><td>Clone the fetch only CMake Git repo</td></tr>
+			<tr><td>git remote add stage git@cmake.org:stage/cmake.git</td><td>Add the pushable staging repository. The staging repository is used for testing and reviewing branches before they’re ready to be merged. CMake developers are given push access to it, but only CMake core maintainers have push access to the main repository.</td></tr>
+			<tr><td colspan="2">These commands make a new branch and submit it for review:</td></tr>
+			<tr><td>git fetch origin</td><td>Fetch the remote branches</td></tr>
+			<tr><td>git checkout -b branchname origin/master</td><td>Branch from origin/master</td></tr>
+			<tr><td>git add, git commit</td><td>Make changes and commit them</td></tr>
+			<tr><td>git push --set-upstream stage branchname</td><td>Push the branch to the staging repository</td></tr>
+			<tr><td colspan="2">Post an email to the CMake mailing list to ask other CMake developers for review and feedback of the changes. </td></tr>
+			<tr><td colspan="2">These steps merge a branch for nightly testing:</td><tr>
+			<tr><td>git fetch stage</td><td> Fetch the remote branches </td></tr>			
+			<tr><td>git checkout next</td><td>Check out the next branch</td></tr>
+			<tr><td>git merge stage/branchname </td><td>Merge the remote branch</td></tr>
+			<tr><td>git push</td><td>Push the next branch</td></tr>
+			<tr><td>ssh git@cmake.org stage cmake merge -b next branchname</td><td>CMake developers perform these steps with the stage command over SSH </td></tr>
+			<tr><td colspan="2" > These steps make changes based on feedback from other CMake developers</td></tr>
+			<tr><td>git checkout branchname</td><td>Check out the branch</td></tr>
+			<tr><td>git add, git commit, git push</td><td>make changes and push the new commits to the staging repo. </td></tr>
+			<tr><td colspan="2">Post another email to CMake mailing list</td></tr>
+			<tr><td colspan="2">These steps allow a CMake core maintainer to merge a branch into master after successful review:</td></tr>
+			<tr><td> git fetch stage</td><td>fetch the remote branch</td></tr>
+			<tr><td> git checkout master.</td><td>Check out the master branch</td></tr>
+			<tr><td> git merge stage/branchname</td><td>Merge the remote branch</td></tr>
+			<tr><td> git push</td><td>Push the master branch</td></tr>
+			<tr><td colspan="2" >CMake core maintainers perform these steps with the stage command over SSH by running  ssh git@cmake.org stage cmake merge -b master branchname</td></tr>
+			
+			</tbody>
+		</table>
+	
+ 			<table>
+			<caption> Homebrew's Developers Workflow </caption>
+			<thead>
+				<tr><th>Commands</th><th>What it does</th></tr>
+			</thead>		
+			<tbody>
+			<tr><td colspan="2">These commands set up the homebrew repo on the local machine</td></tr>
+			<tr><td>clone repo locally... then fork repo on github. This creates a pushable personal remote repo</td></tr>
+			<tr><td>git remote add username https://github.com/username/homebrew.git</td><td>Add the pushable forked repo. </td></tr>
+			<tr><td colspan = "2" > These commands make a new branch and submit it for review </td></tr>
+			<tr><td>git checkout master</td><td>Check out master branch</td></tr>
+			<tr><td>git pull --rebase</td><td>Retrieve new changes to master branch with git pull --rebase</td></tr>
+			<tr><td>git checkout -b branchname origin/master</td><td>Branch from master</td></tr>
+			<tr><td> git add and git commit</td><td>Make changes and commit</td></tr>
+			<tr><td>git push --set-upstream username branchname</td><td>Push the branch to the fork</td></tr>
+			<tr><td colspan = "2" >Create a pull request on GitHub, requesting review and merge of the branch</td></tr>
+			<tr><td colspan = "2">These commands make changes based on feedback</td></tr>
+			<tr><td colspan = "2">Check out the branch</td></tr>
+			<tr><td colspan = "2">Make changes and commit</td></tr>
+			<tr><td>git rebase --interactive origin/master</td><td>Squash the new commits</td></tr>
+			<tr><td>git push --force</td><td> Update the remote branch and the pull request</td></tr>
+			<tr><td colspan="2">These commands allow a Homebrew maintainer to merge a branch into master:</td></tr>
+			<tr><td>git checkout master</td><td>Check out the master branch</td></tr>
+			<tr><td>git add remote username https://github.com/username/homebrew.git, git fetch username, and git merge username/branchname</td><td>Add the forked repo and cherry-pick the commit. </td></tr>
+			<tr><td>git rebase --interactive origin/master</td><td>It’s common for Homebrew maintainers to edit or squash commits and rewrite commit messages but preserve the author metadata so the author retains credit.</td></tr>
+			<tr><td>git push</td><td>Push the master branch</td></tr>
+			</tbody>
+			</table>
+
+
+
+	</body>	
+</html>
